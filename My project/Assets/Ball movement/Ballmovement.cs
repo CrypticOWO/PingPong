@@ -53,21 +53,31 @@ public class Ballmovement : MonoBehaviour
         if (transform.position.x >= xBorder)
         {
             xMove = false;
+            transform.position = new Vector2(0, 0);
+            xSpeed = 0.01f;
+            ySpeed = 0.01f;
             playerOneScore += 1;
             
         }
         if (transform.position.y >= yBorder)
         {
             yMove = false;
+            xSpeed += 0.001f;
+            ySpeed += 0.001f;
         }
         if (transform.position.x <= -xBorder)
         {
             xMove = true;
+            transform.position = new Vector2(0, 0);
+            xSpeed = 0.01f;
+            ySpeed = 0.01f;
             playerTwoScore += 1;
         }
         if (transform.position.y <= -yBorder)
         {
             yMove = true;
+            xSpeed += 0.001f;
+            ySpeed += 0.001f;
         }
 
         scoreTextP1.text = playerOneScore.ToString();
@@ -82,10 +92,14 @@ public class Ballmovement : MonoBehaviour
             if (xMove == true)
             {
                 xMove = false;
+                xSpeed += 0.001f;
+                ySpeed += 0.001f;
             }
             else if (xMove == false)
             {
                 xMove = true;
+                xSpeed += 0.001f;
+                ySpeed += 0.001f;
             }
         }
     }
